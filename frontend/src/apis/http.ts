@@ -99,7 +99,7 @@ const request = async <T>(
 
     return {
       success: true,
-      data: data as T,
+      data: data.data as T,
     };
   } catch (error) {
     const networkError =
