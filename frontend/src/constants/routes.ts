@@ -1,6 +1,5 @@
 export const ROUTES = {
   LANDING: '/',
-  IN_APP_BROWSER: '/inapp',
   AUTH: {
     LOGIN: '/login',
     KAKAO: '/auth/login/kakao',

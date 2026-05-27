@@ -33,7 +33,6 @@ const SpaceInfoPage = lazy(() => import('../pages/host/spaceInfoPage/SpaceInfoPa
 const HostWorkDetail = lazy(() => import('../pages/host/workDetail/HostWorkDetail'));
 const WorkForm = lazy(() => import('../pages/host/workForm/WorkForm'));
 const WorkListPage = lazy(() => import('../pages/host/workList/WorkListPage'));
-const InAppRedirectPage = lazy(() => import('../pages/inapp/InAppRedirectPage'));
 const LandingPage = lazy(() => import('../pages/landing/LandingPage'));
 const LoginPage = lazy(() => import('../pages/login/LoginPage'));
 const NotFound = lazy(() => import('../pages/notFound/NotFound'));
@@ -71,10 +70,6 @@ const routes: AppRouteObject[] = [
             leftIcon: 'logo',
           },
         },
-      },
-      {
-        path: '/inapp',
-        element: <SuspenseWrapper element={<InAppRedirectPage />} />,
       },
       {
         path: '/auth/login/kakao',
