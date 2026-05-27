@@ -1,20 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { MdChevronLeft, MdHome, MdMenu } from 'react-icons/md';
-import {
-  Outlet,
-  useLocation,
-  useMatches,
-  useNavigate,
-  useParams,
-} from 'react-router-dom';
+import { Outlet, useLocation, useMatches, useNavigate, useParams } from 'react-router-dom';
 import LogoSvg from '../../../../@assets/logo/logo.svg?react';
-import {
-  createGuestHomeRoute,
-  createSpaceMainRoute,
-  ROUTES,
-} from '../../../../constants/routes';
+import { createGuestHomeRoute, createSpaceMainRoute, ROUTES } from '../../../../constants/routes';
 import useButtonTracking from '../../../../hooks/@common/useButtonTracking';
-import useInAppRedirect from '../../../../hooks/@common/useInAppRedirect';
 import usePageTracking from '../../../../hooks/@common/usePageTracking';
 import type { AppRouteObject, IconAction } from '../../../../types/route.type';
 import Footer from '../../../@common/footer/Footer';
@@ -32,7 +21,6 @@ const Layout = () => {
   const navigate = useNavigate();
   const { spaceCode } = useParams();
 
-  const { redirectToExternalBrowser } = useInAppRedirect();
   const path = useLocation().pathname;
 
   const isHost = path.includes('/host/');
@@ -95,20 +83,13 @@ const Layout = () => {
 
   const leftIcon = leftHeaderIcons[current?.handle?.headerIcon?.leftIcon];
 
-  //biome-ignore lint/correctness/useExhaustiveDependencies: 페이지 접속 시 처음 한 번만 실행
-  useEffect(() => {
-    redirectToExternalBrowser(window.location.href);
-  }, []);
-
   return (
     <>
       {!isNoHamburger && (
         <Hamburger
           isOpen={isHamburgerOpen}
           onClose={closeHamburger}
-          navigateInfo={
-            isHost ? hostNavigateInfo() : guestNavigateInfo(spaceCode ?? '')
-          }
+          navigateInfo={isHost ? hostNavigateInfo() : guestNavigateInfo(spaceCode ?? '')}
         />
       )}
       <ScrollToTop />

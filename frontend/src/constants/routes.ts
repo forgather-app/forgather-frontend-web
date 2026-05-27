@@ -1,6 +1,5 @@
 export const ROUTES = {
   LANDING: '/',
-  IN_APP_BROWSER: '/inapp',
   AUTH: {
     LOGIN: '/login',
     KAKAO: '/auth/login/kakao',
@@ -45,10 +44,7 @@ export const createGuestWorkListRoute = (spaceCode: string) => {
   return `/guest/${spaceCode}/work-list`;
 };
 
-export const createGuestWorkDetailRoute = (
-  spaceCode: string,
-  workId: string,
-) => {
+export const createGuestWorkDetailRoute = (spaceCode: string, workId: string) => {
   return `/guest/${spaceCode}/work-detail/${workId}`;
 };
 
@@ -72,10 +68,7 @@ export const createCreateGuestbookRoute = (spaceCode: string) => {
   return `/guest/${spaceCode}/create-guestbook`;
 };
 
-export const createGuestbookCardRoute = (
-  spaceCode: string,
-  guestbookCardId: number | string,
-) => {
+export const createGuestbookCardRoute = (spaceCode: string, guestbookCardId: number | string) => {
   return `/host/${spaceCode}/guestbook/${guestbookCardId}`;
 };
 
