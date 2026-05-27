@@ -35,8 +35,7 @@ export const refreshAccessToken = async (): Promise<AuthTokenResponse> => {
 
       if (!response.ok) throw new Error('로그인 세션이 만료되었습니다.');
 
-      const json = await response.json();
-      const data = json.data;
+      const data = await response.json();
 
       setAuthTokens(data.accessToken, data.refreshToken);
 
