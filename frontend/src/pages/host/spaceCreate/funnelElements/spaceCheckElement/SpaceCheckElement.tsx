@@ -62,6 +62,8 @@ const SpaceCheckElement = ({ createFunnelForm }: SpaceCheckElementProps) => {
             />
             <InfoRow label="E-mail" value={createFunnelForm.email} />
             <InfoRow label="Instagram" value={createFunnelForm.instagram} />
+            <InfoRow label="링크 URL" value={createFunnelForm.link} />
+            <InfoRow label="링크 표시 이름" value={createFunnelForm.linkName} />
           </S.InfoRowContainer>
         </S.Wrapper>
       }

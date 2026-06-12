@@ -50,6 +50,8 @@ export const useSpaceCreate = () => {
       description: rest.description,
       email: rest.email,
       instagramUsername: rest.instagram,
+      link: rest.link,
+      linkName: rest.linkName,
     };
 
     const formData = createFormData(

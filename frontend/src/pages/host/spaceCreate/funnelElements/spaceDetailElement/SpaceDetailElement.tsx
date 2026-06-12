@@ -17,7 +17,7 @@ import * as S from './SpaceDetailElement.styles';
 
 const SpaceDetailElement = ({
   onNext,
-  initialValue = { profileImage: [], email: '', instagram: '' },
+  initialValue = { profileImage: [], email: '', instagram: '', link: '', linkName: '' },
 }: FunnelElementProps<SpaceDetailElementInfos>) => {
   const { localFiles, previewFiles, handleFilesUploadClick, clearLocalFiles } =
     useLocalFile({
@@ -26,6 +26,8 @@ const SpaceDetailElement = ({
     });
   const [email, setEmail] = useState(initialValue.email);
   const [instagram, setInstagram] = useState(initialValue.instagram);
+  const [link, setLink] = useState(initialValue.link.replace(/^https?:\/\//, ''));
+  const [linkName, setLinkName] = useState(initialValue.linkName);
   const { isError: isEmailError, errorMessage: emailErrorMessage } =
     createErrorMessageWithValidators({
       value: email,
@@ -36,8 +38,18 @@ const SpaceDetailElement = ({
       value: instagram,
       validators: [funnelValidators.instagram],
     });
+  const { isError: isLinkError, errorMessage: linkErrorMessage } =
+    createErrorMessageWithValidators({
+      value: link,
+      validators: [funnelValidators.link],
+    });
+  const { isError: isLinkNameError, errorMessage: linkNameErrorMessage } =
+    createErrorMessageWithValidators({
+      value: linkName,
+      validators: [funnelValidators.linkName],
+    });
   const { trackClick } = useButtonTracking({ userType: 'host' });
-  const isDisabled = isEmailError || isInstagramError;
+  const isDisabled = isEmailError || isInstagramError || isLinkError || isLinkNameError;
 
   const handlePhotoUploadClick = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -88,6 +100,29 @@ const SpaceDetailElement = ({
               errorMessage={instagramErrorMessage}
               maxLength={CONSTRAINTS.MAX_LENGTH.SPACE.INSTAGRAM_USERNAME}
             />
+            <S.LinkFieldGroup>
+              <TextInput
+                label="URL"
+                prefix="https://"
+                placeholder="example.com"
+                name="link"
+                value={link}
+                onChange={(e) => setLink(e.target.value)}
+                errorMessage={linkErrorMessage}
+                maxLength={CONSTRAINTS.MAX_LENGTH.SPACE.LINK}
+                inputMode="url"
+              />
+              <S.LinkFieldDivider />
+              <TextInput
+                label="표시 이름"
+                placeholder="포트폴리오"
+                name="linkName"
+                value={linkName}
+                onChange={(e) => setLinkName(e.target.value)}
+                errorMessage={linkNameErrorMessage}
+                maxLength={CONSTRAINTS.MAX_LENGTH.SPACE.LINK_NAME}
+              />
+            </S.LinkFieldGroup>
           </S.InputContainer>
         </S.Wrapper>
       }
@@ -97,6 +132,8 @@ const SpaceDetailElement = ({
           profileImage: localFiles,
           email,
           instagram,
+          link: link ? `https://${link}` : '',
+          linkName,
         })
       }
     />
