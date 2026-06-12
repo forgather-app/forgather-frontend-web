@@ -5,6 +5,7 @@ import {
   checkInputEmpty,
   checkInstagramUsernameForm,
   checkMaxLength,
+  checkUrlForm,
 } from '../../../validators/form.validators';
 
 export const editFormValidators = {
@@ -23,8 +24,17 @@ export const editFormValidators = {
     email: createSafeValidator((value: string) => checkEmailForm(value)),
   },
   instagramUsername: {
-    instagramUsername: createSafeValidator((value: string) =>
-      checkInstagramUsernameForm(value),
+    instagramUsername: createSafeValidator((value: string) => checkInstagramUsernameForm(value)),
+  },
+  link: {
+    url: createSafeValidator((value: string) => checkUrlForm(value)),
+    maxLength: createSafeValidator((value: string) =>
+      checkMaxLength(value, CONSTRAINTS.MAX_LENGTH.SPACE.LINK),
+    ),
+  },
+  linkName: {
+    maxLength: createSafeValidator((value: string) =>
+      checkMaxLength(value, CONSTRAINTS.MAX_LENGTH.SPACE.LINK_NAME),
     ),
   },
 };
