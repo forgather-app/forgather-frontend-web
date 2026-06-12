@@ -11,3 +11,21 @@ export const ActionButtonContainer = styled.div`
   border-radius: 40px;
   margin-left: auto;
 `;
+
+export const LinkSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+`;
+
+export const LinkAnchor = styled.a`
+  ${({ theme }) => theme.typography.bodyRegular}
+  color: ${({ theme }) => theme.colors.gray05};
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  word-break: break-all;
+  text-align: center;
+  cursor: pointer;
+`;

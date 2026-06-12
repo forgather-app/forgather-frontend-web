@@ -76,6 +76,11 @@ const SpaceInfoPage = () => {
         <InfoRow label="스페이스 설명" value={spaceInfo.description} />
         <InfoRow label="E-mail" value={spaceInfo.email} />
         <InfoRow label="Instagram" value={spaceInfo.instagramUsername} />
+        <S.LinkInfoGroup>
+          <InfoRow label="링크 URL" value={spaceInfo.link ?? ''} />
+          <S.LinkInfoDivider />
+          <InfoRow label="표시 이름" value={spaceInfo.linkName ?? ''} />
+        </S.LinkInfoGroup>
       </S.InfoRowContainer>
       <S.DeleteButtonContainer>
         <Button

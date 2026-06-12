@@ -8,6 +8,7 @@ import { MdSettings } from 'react-icons/md';
 import { useNavigate, useParams } from 'react-router-dom';
 import Button from '../../../components/@common/buttons/button/Button';
 import IconButton from '../../../components/@common/buttons/iconButton/IconButton';
+import LinkCapsule from '../../../components/specific/linkCapsule/LinkCapsule';
 import Thumbnail from '../../../components/@common/thumbnail/Thumbnail';
 import SinglePhotoModal from '../../../components/specific/modal/singlePhotoModal/SinglePhotoModal';
 import SpaceShareModal from '../../../components/specific/modal/spaceShareModal/SpaceShareModal';
@@ -70,6 +71,11 @@ const HostSpaceHomePage = () => {
   const handleGuestbookClick = () => {
     trackClick('host_space_guestbook_button');
     navigate(createGuestbookRoute(spaceCode));
+  };
+
+  const openLink = (url: string) => {
+    const href = url.startsWith('http') ? url : `https://${url}`;
+    window.open(href, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -143,6 +149,14 @@ const HostSpaceHomePage = () => {
             />
           )}
         </MainPageStyles.IconButtonContainer>
+        {spaceInfo.link && (
+          <S.LinkSection>
+            <LinkCapsule
+              name={spaceInfo.linkName || '링크'}
+              onClick={() => openLink(spaceInfo.link)}
+            />
+          </S.LinkSection>
+        )}
         <DividerLine width="10%" />
         <MainPageStyles.ButtonContainer>
           <Button

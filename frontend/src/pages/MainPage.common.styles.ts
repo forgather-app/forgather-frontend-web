@@ -55,6 +55,18 @@ export const Footer = styled.footer`
   margin-top: auto;
 `;
 
+export const LinkAnchor = styled.button`
+  ${({ theme }) => theme.typography.bodyRegular}
+  color: ${({ theme }) => theme.colors.gray05};
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  word-break: break-all;
+  text-align: center;
+`;
+
 export const Thumbnail = styled.img`
   max-width: 60px;
   width: 100%;
