@@ -24,7 +24,6 @@ import SpaceInfoPage from '../pages/host/spaceInfoPage/SpaceInfoPage';
 import HostWorkDetail from '../pages/host/workDetail/HostWorkDetail';
 import WorkForm from '../pages/host/workForm/WorkForm';
 import WorkListPage from '../pages/host/workList/WorkListPage';
-import InAppRedirectPage from '../pages/inapp/InAppRedirectPage';
 import LandingPage from '../pages/landing/LandingPage';
 import LoginPage from '../pages/login/LoginPage';
 import NotFound from '../pages/notFound/NotFound';
@@ -55,10 +54,6 @@ const routes: AppRouteObject[] = [
             leftIcon: 'logo',
           },
         },
-      },
-      {
-        path: '/inapp',
-        element: <InAppRedirectPage />,
       },
       {
         path: '/auth/login/kakao',
