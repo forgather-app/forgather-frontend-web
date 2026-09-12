@@ -40,3 +40,13 @@ export const checkYoutubeUrlForm = (value: string) => {
     throw new Error('유효한 유튜브 링크 형식이 아닙니다.');
   }
 };
+
+export const checkUrlForm = (value: string) => {
+  if (!value) return;
+  try {
+    const url = value.startsWith('http') ? value : `https://${value}`;
+    new URL(url);
+  } catch {
+    throw new Error('올바른 URL 형식을 입력해 주세요.');
+  }
+};

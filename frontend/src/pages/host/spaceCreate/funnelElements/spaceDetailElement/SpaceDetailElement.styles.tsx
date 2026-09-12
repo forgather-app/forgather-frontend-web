@@ -25,3 +25,18 @@ export const Label = styled.label`
   font-weight: 500;
   color: #333333;
 `;
+
+export const LinkFieldGroup = styled.div`
+  border: 1px solid ${({ theme }) => theme.colors.gray02};
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
+
+export const LinkFieldDivider = styled.hr`
+  border: none;
+  border-top: 1px solid ${({ theme }) => theme.colors.gray02};
+  margin: 0;
+`;

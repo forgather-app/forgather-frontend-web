@@ -15,12 +15,16 @@ export interface CreateFunnelForm {
   profileImage: LocalFile[];
   email: string;
   instagram: string;
+  link: string;
+  linkName: string;
 }
 
 export interface SpaceDetailElementInfos {
   profileImage: LocalFile[];
   email: string;
   instagram: string;
+  link: string;
+  linkName: string;
 }
 
 export interface FunnelBaseElementProps {

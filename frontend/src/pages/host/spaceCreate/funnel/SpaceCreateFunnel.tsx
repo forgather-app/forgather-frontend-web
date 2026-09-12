@@ -27,6 +27,8 @@ const initialCreateFunnelForm: CreateFunnelForm = {
   profileImage: [],
   email: '',
   instagram: '',
+  link: '',
+  linkName: '',
 };
 
 const SpaceCreateFunnel = () => {
@@ -103,6 +105,8 @@ const SpaceCreateFunnel = () => {
               profileImage: Funnel.form.profileImage,
               email: Funnel.form.email,
               instagram: Funnel.form.instagram,
+              link: Funnel.form.link,
+              linkName: Funnel.form.linkName,
             }}
           />
         </Funnel.Step>

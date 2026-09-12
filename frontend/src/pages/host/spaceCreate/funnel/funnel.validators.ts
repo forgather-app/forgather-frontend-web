@@ -4,6 +4,7 @@ import {
   checkInstagramUsernameForm,
   checkMaxLength,
   checkNoWhitespaceOnly,
+  checkUrlForm,
 } from '../../../../validators/form.validators';
 
 export const funnelValidators = {
@@ -24,5 +25,14 @@ export const funnelValidators = {
   instagram: (value: string) => {
     checkNoWhitespaceOnly(value);
     checkInstagramUsernameForm(value);
+  },
+  link: (value: string) => {
+    checkNoWhitespaceOnly(value);
+    checkUrlForm(value);
+    checkMaxLength(value, CONSTRAINTS.MAX_LENGTH.SPACE.LINK);
+  },
+  linkName: (value: string) => {
+    checkNoWhitespaceOnly(value);
+    checkMaxLength(value, CONSTRAINTS.MAX_LENGTH.SPACE.LINK_NAME);
   },
 };

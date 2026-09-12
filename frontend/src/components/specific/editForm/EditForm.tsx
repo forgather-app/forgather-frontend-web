@@ -33,6 +33,8 @@ const EditForm = () => {
     isPublic: false,
     email: '',
     instagramUsername: '',
+    link: '',
+    linkName: '',
     isDeletePhoto: false,
   };
 
@@ -45,6 +47,8 @@ const EditForm = () => {
         isPublic: spaceInfo.isPublic,
         email: spaceInfo.email,
         instagramUsername: spaceInfo.instagramUsername,
+        link: (spaceInfo.link ?? '').replace(/^https?:\/\//, ''),
+        linkName: spaceInfo.linkName ?? '',
         isDeletePhoto: false,
       });
     }
@@ -88,11 +92,17 @@ const EditForm = () => {
       hasInstagram: !!data.instagramUsername,
     });
 
+    const normalizedData = {
+      ...data,
+      link: data.link ? `https://${data.link}` : '',
+      linkName: data.linkName ?? '',
+    };
+
     if (localFiles.length !== 0 && localFiles[0].originFile) {
-      patchSpaceInfo(data, localFiles[0].originFile);
+      patchSpaceInfo(normalizedData, localFiles[0].originFile);
       return;
     }
-    patchSpaceInfo(data);
+    patchSpaceInfo(normalizedData);
   };
 
   const handleDeleteImage = () => {
@@ -204,6 +214,29 @@ const EditForm = () => {
         errorMessage={errors.instagramUsername?.message}
         maxLength={CONSTRAINTS.MAX_LENGTH.SPACE.INSTAGRAM_USERNAME}
       />
+      <S.LinkFieldGroup>
+        <TextInput
+          {...register('link', {
+            validate: editFormValidators.link,
+          })}
+          label="URL"
+          prefix="https://"
+          placeholder="example.com"
+          errorMessage={errors.link?.message}
+          maxLength={CONSTRAINTS.MAX_LENGTH.SPACE.LINK}
+          inputMode="url"
+        />
+        <S.LinkFieldDivider />
+        <TextInput
+          {...register('linkName', {
+            validate: editFormValidators.linkName,
+          })}
+          label="표시 이름"
+          placeholder="포트폴리오"
+          errorMessage={errors.linkName?.message}
+          maxLength={CONSTRAINTS.MAX_LENGTH.SPACE.LINK_NAME}
+        />
+      </S.LinkFieldGroup>
       <Button
         variant="primary"
         type="submit"

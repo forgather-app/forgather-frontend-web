@@ -3,6 +3,7 @@ import { IoLogoInstagram, IoMailOutline } from 'react-icons/io5';
 import { useNavigate, useParams } from 'react-router-dom';
 import Button from '../../../components/@common/buttons/button/Button';
 import IconButton from '../../../components/@common/buttons/iconButton/IconButton';
+import LinkCapsule from '../../../components/specific/linkCapsule/LinkCapsule';
 import Thumbnail from '../../../components/@common/thumbnail/Thumbnail';
 import SinglePhotoModal from '../../../components/specific/modal/singlePhotoModal/SinglePhotoModal';
 import { TRY_IT_NOW_SPACE_CODE } from '../../../constants/constants';
@@ -106,6 +107,17 @@ const GuestSpaceHomePage = () => {
             />
           )}
         </MainPageStyles.IconButtonContainer>
+        {spaceInfo.link && (
+          <LinkCapsule
+            name={spaceInfo.linkName || '링크'}
+            onClick={() => {
+              const href = spaceInfo.link.startsWith('http')
+                ? spaceInfo.link
+                : `https://${spaceInfo.link}`;
+              window.open(href, '_blank', 'noopener,noreferrer');
+            }}
+          />
+        )}
         <DividerLine width="10%" />
         <MainPageStyles.ButtonContainer>
           <Button

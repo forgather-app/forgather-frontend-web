@@ -8,6 +8,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   maxCount?: number;
   validLength?: number;
   isRequired?: boolean;
+  prefix?: string;
 }
 
 const TextInput = ({
@@ -17,6 +18,7 @@ const TextInput = ({
   maxCount,
   validLength,
   isRequired = false,
+  prefix,
   ...inputProps
 }: InputProps) => {
   return (
@@ -26,12 +28,23 @@ const TextInput = ({
         <C.requiredDot>{isRequired && '*'}</C.requiredDot>
       </C.Label>
       <S.SubLabel>{subLabel}</S.SubLabel>
-      <S.InputField
-        {...inputProps}
-        id={inputProps.id}
-        aria-label={inputProps['aria-label']}
-        $isError={!!errorMessage}
-      />
+      {prefix ? (
+        <S.InputWrapper $isError={!!errorMessage}>
+          <S.Prefix>{prefix}</S.Prefix>
+          <S.PrefixedInputField
+            {...inputProps}
+            id={inputProps.id}
+            aria-label={inputProps['aria-label']}
+          />
+        </S.InputWrapper>
+      ) : (
+        <S.InputField
+          {...inputProps}
+          id={inputProps.id}
+          aria-label={inputProps['aria-label']}
+          $isError={!!errorMessage}
+        />
+      )}
       <C.InputFooterContainer>
         <C.ErrorMessage>{errorMessage ? errorMessage : ''}</C.ErrorMessage>
         <C.InputCount>

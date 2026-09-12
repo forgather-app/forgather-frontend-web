@@ -20,3 +20,19 @@ export const PublicButtonContainer = styled.div`
   gap: 8px;
   width: 100%;
 `;
+
+export const LinkFieldGroup = styled.div`
+  width: 100%;
+  border: 1px solid ${({ theme }) => theme.colors.gray02};
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
+
+export const LinkFieldDivider = styled.hr`
+  border: none;
+  border-top: 1px solid ${({ theme }) => theme.colors.gray02};
+  margin: 0;
+`;

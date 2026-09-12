@@ -5,6 +5,8 @@ export const CONSTRAINTS = {
       DESCRIPTION: 200,
       EMAIL: 50,
       INSTAGRAM_USERNAME: 30,
+      LINK: 200,
+      LINK_NAME: 20,
     },
     WORK: {
       TITLE: 50,
